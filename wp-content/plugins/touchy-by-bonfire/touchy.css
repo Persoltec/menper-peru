@@ -1,0 +1,924 @@
+/*************************************************************
+[TABLE OF CONTENTS]
+
+- LOGO AREA
+- MAIN MENUBAR
+- DEFAULT ICONS
+- TEXT LABELS
+- ACCORDION MENU TOOLTIP
+- ACCORDION MENU
+- ACCORDION SUB-MENU
+- ACCORDION SUB-MENU ARROW
+- ACCORDION MENU ICONS
+- SEARCH FIELD
+- BACKGROUND OVERLAY
+- WIDGET LOCATION
+- Z-INDEXES
+*************************************************************/
+
+
+/* LOGO AREA
+**************************************************/
+.touchy-logo-wrapper {
+    position:absolute;
+    display:table;
+    text-align:center;
+    top:0;
+    left:0;
+    width:100%;
+    height:60px;
+    background-color:#3E8EE8;
+}
+.touchy-logo-wrapper-bg {
+    position:absolute;
+    z-index:-1;
+    top:0;
+    left:0;
+    width:100%;
+    height:60px;
+    opacity:0.1;
+}
+/* if logo is image */
+.touchy-logo-image {
+	display:table-cell;
+	vertical-align:middle;
+}
+.touchy-logo-image img {
+	max-height:40px;
+    width:auto;
+    vertical-align:bottom;
+    margin:0 18px;
+}
+/* if logo is text */
+.touchy-logo {
+	display:table-cell;
+	vertical-align:middle;
+}
+.touchy-logo a {
+	font-family:'Roboto';
+	font-weight:400;
+	font-size:18px;
+	text-decoration:none;
+	letter-spacing:0;
+	color:#fff;
+	margin:0 18px;
+	padding:0;
+	
+	-webkit-transition:all .25s ease;
+	-moz-transition:all .25s ease;
+	transition:all .25s ease;
+}
+.touchy-logo a:hover {
+	text-decoration:none;
+	color:#fff;
+}
+
+
+/* MAIN MENUBAR
+**************************************************/
+.touchy-wrapper {
+    position:absolute;
+	display:table;
+	table-layout:fixed;
+	left:0;
+	right:0;
+	top:60px;
+	width:100%;
+	height:51px;
+	vertical-align:middle;
+	
+    -webkit-box-shadow:0px 0px 1px 1px rgba(0,0,0,0.12);
+	-moz-box-shadow:0px 0px 1px 1px rgba(0,0,0,0.12);
+	box-shadow:0px 0px 1px 1px rgba(0,0,0,0.12);
+    
+    -webkit-transition:-webkit-box-shadow .35s ease;
+	-moz-transition:-moz-box-shadow .35s ease;
+	transition:box-shadow .35s ease;
+    
+    /* for sticky on iOS (otherwise finger will have to be lifted before menubar sticks to top) */
+    transform:translate3d(0px,0px,0px);
+    -webkit-transform:translate3d(0px,0px,0px);
+}
+.touchy-wrapper-shadow-active {
+    -webkit-box-shadow:0px 0px 10px 1px rgba(0,0,0,0.2) !important;
+    -moz-box-shadow:0px 0px 10px 1px rgba(0,0,0,0.2) !important;
+	box-shadow:0px 0px 10px 1px rgba(0,0,0,0.2) !important;
+}
+/* when sticky after scroll */
+.touchy-wrapper-top {
+    position:fixed;
+    top:0;
+}
+/* Shared styles for back, call, email and menu buttons */
+.touchy-wrapper .touchy-back-button,
+.touchy-wrapper .touchy-call-button,
+.touchy-wrapper .touchy-email-button,
+.touchy-wrapper .touchy-search-button,
+.touchy-menu-button {
+    position:relative;
+	min-width:50px;
+	cursor:pointer;
+	text-align:center;
+	vertical-align:middle;
+	display:table-cell;
+	text-decoration:none !important;
+	
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	transition: all .3s ease;
+
+	/* menubar button icon color + background color */
+	color:#D7D7D7;
+	background-color:#fff;
+	
+	/* remove the flickering effect of a tapped link/button when on a touch device */
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+/* when menu active */
+.touchy-menu-button-active {
+	color:#fff;
+	background-color:#07B1FF;
+}
+/* the buttons */
+.touchy-back-button,
+.touchy-call-button,
+.touchy-email-button,
+.touchy-search-button {
+	font-size:22px;
+}
+/* Menu button */
+.touchy-menu-button {
+    position:relative;
+	padding-top:5px;
+	font-size:22px;
+
+	/* remove separator from the menu button */
+	border:none;
+}
+/* button separators */
+.touchy-wrapper .touchy-back-button:after,
+.touchy-wrapper .touchy-call-button:after,
+.touchy-wrapper .touchy-email-button:after,
+.touchy-wrapper .touchy-search-button:after {
+    content:'';
+    position:absolute;
+    top:5px;
+    right:0;
+    width:1px;
+    height:41px;
+    
+    -webkit-transition:opacity .1s ease 0s;
+	-moz-transition:opacity .1s ease 0s;
+	transition:opacity .1s ease 0s;
+}
+
+
+/* DEFAULT ICONS
+**************************************************/
+/* default back button */
+.touchy-default-back {
+    position:relative;
+    top:1px;
+    margin:0 auto;
+    width:21px;
+    height:2px;
+    background-color:#D7D7D7;
+}
+.touchy-default-back:before,
+.touchy-default-back:after {
+    content:'';
+    position:absolute;
+    left:-2px;
+    display:block;
+    width:8px;
+    height:2px;
+    background-color:#D7D7D7;
+}
+.touchy-default-back:before {
+    top:-2px;
+    -webkit-transform:rotate(-45deg);
+	-moz-transform:rotate(-45deg);
+	transform:rotate(-45deg);
+}
+.touchy-default-back:after {
+    top:2px;
+    -webkit-transform:rotate(45deg);
+	-moz-transform:rotate(45deg);
+	transform:rotate(45deg);
+}
+/* default call icon */
+.touchy-default-call-one,
+.touchy-default-call-two,
+.touchy-default-call-three {
+    position:relative;
+    top:-5px;
+    left:-3px;
+    display:inline-block;
+    margin:0 auto;
+    width:4px;
+    height:4px;
+    background-color:#D7D7D7;
+}
+.touchy-default-call-two { left:-1px; }
+.touchy-default-call-three { left:1px; }
+.touchy-default-call-one:before,
+.touchy-default-call-two:before,
+.touchy-default-call-three:before,
+.touchy-default-call-one:after,
+.touchy-default-call-two:after,
+.touchy-default-call-three:after {
+    content:'';
+    position:absolute;
+    display:block;
+    width:4px;
+    height:4px;
+    background-color:#D7D7D7;
+}
+.touchy-default-call-one:before,
+.touchy-default-call-two:before,
+.touchy-default-call-three:before {
+    top:-6px;
+}
+.touchy-default-call-one:after,
+.touchy-default-call-two:after,
+.touchy-default-call-three:after {
+    top:6px;
+}
+/* default email icon */
+.touchy-default-email-outer {
+    position:relative;
+    display:block;
+    width:19px;
+    height:13px;
+    
+    -webkit-box-shadow:0px 0px 0px 2px #D7D7D7;
+    -moz-box-shadow:0px 0px 0px 2px #D7D7D7;
+    box-shadow:0px 0px 0px 2px #D7D7D7;
+
+    margin:0 auto;
+    padding:0;
+}
+.touchy-default-email-outer:before {
+    content:'';
+    position:absolute;
+    top:5px;
+    left:4px;
+    width:2px;
+    height:7px;
+    background-color:#D7D7D7;
+    
+    -webkit-transform:rotate(45deg);
+	-moz-transform:rotate(45deg);
+	transform:rotate(45deg);
+}
+.touchy-default-email-outer:after {
+    content:'';
+    position:absolute;
+    top:5px;
+    left:13px;
+    width:2px;
+    height:7px;
+    background-color:#D7D7D7;
+    
+    -webkit-transform:rotate(-45deg);
+	-moz-transform:rotate(-45deg);
+	transform:rotate(-45deg);
+}
+.touchy-default-email-inner:before {
+    content:'';
+    position:absolute;
+    top:1px;
+    left:5px;
+    width:2px;
+    height:10px;
+    background-color:#D7D7D7;
+    
+    -webkit-transform:rotate(-45deg);
+	-moz-transform:rotate(-45deg);
+	transform:rotate(-45deg);
+}
+.touchy-default-email-inner:after {
+    content:'';
+    position:absolute;
+    top:1px;
+    left:12px;
+    width:2px;
+    height:10px;
+    background-color:#D7D7D7;
+    
+    -webkit-transform:rotate(45deg);
+	-moz-transform:rotate(45deg);
+	transform:rotate(45deg);
+}
+/* default search icon */
+.touchy-default-search-outer {
+    position:relative;
+    display:block;
+    top:1px;
+    left:4px;
+    width:8px;
+    height:8px;
+    
+    -webkit-box-shadow:0px 0px 0px 2px #D7D7D7;
+    -moz-box-shadow:0px 0px 0px 2px #D7D7D7;
+    box-shadow:0px 0px 0px 2px #D7D7D7;
+
+    margin:0 auto;
+    padding:0;
+}
+.touchy-default-search-outer:after {
+    content:'';
+    position:absolute;
+    top:7px;
+    left:10px;
+    width:2px;
+    height:7px;
+    background-color:#D7D7D7;
+    
+    -webkit-transform:rotate(-45deg);
+	-moz-transform:rotate(-45deg);
+	transform:rotate(-45deg);
+}
+.touchy-default-search-inner {
+    position:relative;
+    top:-2px;
+    left:-15px;
+    width:11px;
+    height:2px;
+    background-color:#D7D7D7;
+}
+.touchy-default-search-inner:before {
+    content:'';
+    position:absolute;
+    left:0;
+    top:5px;
+    width:9px;
+    height:2px;
+    background-color:#D7D7D7;
+}
+.touchy-default-search-inner:after {
+    content:'';
+    position:absolute;
+    left:0;
+    top:10px;
+    width:11px;
+    height:2px;
+    background-color:#D7D7D7;
+}
+/* when search active */
+.touchy-search-button-active {
+	color:#fff !important;
+	background-color:#07B1FF !important;
+}
+.touchy-search-button-active .touchy-default-search-outer {
+    -webkit-box-shadow:0px 0px 0px 2px #fff !important;
+    -moz-box-shadow:0px 0px 0px 2px #fff !important;
+    box-shadow:0px 0px 0px 2px #fff !important;
+}
+.touchy-search-button-active .touchy-default-search-outer:after,
+.touchy-search-button-active .touchy-default-search-inner,
+.touchy-search-button-active .touchy-default-search-inner:before,
+.touchy-search-button-active .touchy-default-search-inner:after {
+    background-color:#fff !important;
+}
+.touchy-search-button-active:after { opacity:0 !important; }
+/* default menu icon */
+.touchy-default-menu {
+    position:relative;
+    top:-2px;
+    width:23px;
+    height:2px;
+    margin:0 auto;
+    background-color:#D7D7D7;
+}
+.touchy-default-menu:before,
+.touchy-default-menu:after {
+    content:'';
+    position:absolute;
+    display:block;
+    width:23px;
+    height:2px;
+    background-color:#D7D7D7;
+}
+.touchy-default-menu:before { top:-6px; }
+.touchy-default-menu:after { top:6px; }
+
+.touchy-menu-button-active .touchy-default-menu,
+.touchy-menu-button-active .touchy-default-menu:before,
+.touchy-menu-button-active .touchy-default-menu:after { background-color:#fff; }
+
+
+/* TEXT LABELS
+**************************************************/
+.touchy-wrapper .touchy-back-button::before,
+.touchy-wrapper .touchy-call-button::before,
+.touchy-wrapper .touchy-email-button::before,
+.touchy-wrapper .touchy-search-button::before,
+.touchy-wrapper .touchy-menu-button::before {
+    position:absolute;
+    bottom:5px;
+    font-family:'Roboto';
+    font-weight:400;
+    font-size:10px;
+    color:#C4BBBB;
+    left:0;
+    right:0;
+    
+    -webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	transition: all .3s ease;
+}
+.touchy-wrapper .touchy-search-button-active::before { color:#fff; }
+.touchy-wrapper .touchy-menu-button-active::before { color:#fff; }
+
+
+/* ACCORDION MENU TOOLTIP
+**************************************************/
+/* accordion menu tooltip */
+.touchy-menu-tooltip {
+    position:absolute;
+    top:0;
+    left:-2px;
+    right:0;
+    margin:0 auto;
+    width:10px;
+    height:10px;
+    display:none;
+}
+.touchy-menu-button-active .touchy-menu-tooltip {
+    display:inline !important;
+}
+.touchy-menu-tooltip:before {
+    content:'';
+    position:absolute;
+	width:0;
+	height:0;
+	margin:0 auto;
+    padding:0;  
+	border-left:4px solid transparent;
+	border-right:4px solid transparent;
+	top:61px;
+    
+    -webkit-transform:translateX(-4px);
+	-moz-transform:translateX(-4px);
+	transform:translateX(-4px);
+
+	/* tooltip color */
+	border-bottom:4px solid #fff;
+}
+
+
+/* ACCORDION MENU
+**************************************************/
+/* main menu */
+.touchy-by-bonfire-wrapper {
+    position:absolute;
+    top:125px;
+    bottom:20px;
+    left:-1000%;
+    margin:0;
+    padding:0;
+    width:220px;
+}
+.touchy-by-bonfire-wrapper-scrolled { position:fixed; top:65px; }
+.touchy-menu-active {
+    left:auto;
+    right:0;
+}
+.touchy-by-bonfire {
+    position:relative;
+    width:210px;
+    top:0;
+    right:0;
+    left:0;
+    overflow-y:auto;
+    overflow-x:hidden;
+    max-height:100%;
+    border-radius:2px;
+    background:#fff;
+    
+    border-width:0 0 3px 0;
+    border-style:solid;
+    border-color:#0E90A7;
+    
+    -webkit-box-shadow:1px 1px 1px 1px rgba(0,0,0,0.1);
+    -moz-box-shadow:1px 1px 1px 1px rgba(0,0,0,0.1);
+    box-shadow:1px 1px 1px 1px rgba(0,0,0,0.1);
+    
+    -webkit-transform:translateY(-10px);
+    -moz-transform:translateY(-10px);
+    transform:translateY(-10px);
+    
+    -webkit-transition:all .4s ease;
+	-moz-transition:all .4s ease;
+	transition:all .4s ease;
+}
+.smooth-scroll {
+    /* smooth scroll on touch devices */
+	-webkit-overflow-scrolling:touch;
+}
+.touchy-menu-active .touchy-by-bonfire {
+    -webkit-transform:translateY(0);
+	-moz-transform:translateY(0);
+	transform:translateY(0);
+}
+.touchy-by-bonfire ul {
+    display:block;
+	width:210px;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+/* individual main menu items */
+.touchy-by-bonfire ul li {
+    position:relative;
+	width:100%;
+	min-height:43px;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	text-align:left;
+    overflow-x:hidden;
+}
+.touchy-by-bonfire ul li a {
+	font-family:'Roboto',sans serif;
+    font-weight:400;
+	font-size:13px;
+    line-height:16px;
+	color:#696867;
+	margin:0;
+	padding:16px 10px 11px 12px;
+	display:inline-block;
+	text-decoration:none;
+    width:100%;
+	
+	-webkit-transition:all .2s ease;
+	-moz-transition:all .2s ease;
+	transition:all .2s ease;
+}
+.touchy-by-bonfire ul li a:hover {
+	color:#6390CF;
+}
+/* menu description */
+.touchy-menu-item-description {
+    margin-top:4px;
+    margin-bottom:2px;
+	font-size:12px;
+	line-height:14px;
+	color:#A1A19E;
+    padding-right:20px;
+}
+/* don't let top-level menu items overlap sub-menu arrows (for cases when descriptions entered) */
+.touchy-by-bonfire ul li.menu-item-has-children > a { width:170px; }
+.touchy-by-bonfire ul li.menu-item-has-children > a .touchy-menu-item-description { padding-right:0; }
+/* responsive adjustments */
+@media screen and (min-width:1180px) {
+    .touchy-by-bonfire-wrapper { width:260px; }
+    .touchy-by-bonfire,
+    .touchy-by-bonfire ul { width:250px; }
+    .touchy-by-bonfire ul li.menu-item-has-children > a { width:210px; }
+}
+@media screen and (min-width:1500px) {
+    .touchy-by-bonfire-wrapper { width:330px; }
+    .touchy-by-bonfire,
+    .touchy-by-bonfire ul { width:320px; }
+    .touchy-by-bonfire ul li.menu-item-has-children > a { width:280px; }
+}
+
+
+/* ACCORDION SUB-MENU
+**************************************************/
+.touchy-by-bonfire .menu {
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+.touchy-by-bonfire ul.sub-menu {
+	list-style:none;
+	margin:0;
+	padding:0;
+	display:none;
+    background-color:#F8F8F7;
+}
+/* sub-menu items */
+.touchy-by-bonfire .sub-menu a {
+	color:#848482;
+	margin:0;
+}
+.touchy-by-bonfire .sub-menu a:hover {
+	color:#6390CF;   
+}
+/* show border on top-level items only */
+.touchy-by-bonfire .menu > li { border-bottom:1px solid #E7E7E7; }
+/* no border on last menu item */
+.touchy-by-bonfire .menu li:last-child { border-bottom:none; }
+/* show top border on first child only */
+.touchy-by-bonfire ul.sub-menu > li:first-child {
+	border-top:1px solid #E7E7E7;
+}
+.touchy-by-bonfire .menu li:first-child,
+.touchy-by-bonfire ul.sub-menu > li li:first-child {
+	border-top:none;
+}
+/* sub-menu item divider */
+.touchy-by-bonfire ul li ul li:after {
+    position:absolute;
+    top:0;
+    left:5px;
+    right:5px;
+    content:'';
+    height:1px;
+    background-color:#E6E6E6;
+}
+.touchy-by-bonfire ul.menu > li > ul.sub-menu > li:first-child:after {
+    display:none;
+}
+
+
+/* ACCORDION SUB-MENU ARROW
+**************************************************/
+/* sub-menu arrow */
+.touchy-sub-arrow {
+    position:absolute;
+    cursor:pointer;
+    top:0;
+    right:0;
+    width:40px;
+    height:100%;
+    
+    /* remove the highlight of a tapped link when on a touch device */
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+.touchy-sub-arrow-inner {
+    position:relative;
+    display:block;
+    top:10px;
+    right:0;
+    width:40px;
+    height:27px;
+    border-left:1px solid #E7E7E7;
+}
+.touchy-sub-arrow-inner::before,
+.touchy-sub-arrow-inner::after {
+    position:absolute;
+    content:'';
+    display:block;
+    top:13px;
+    width:7px;
+    height:2px;
+    background-color:#BBBBBA;
+    
+    -webkit-transition:all .5s ease;
+	-moz-transition:all .5s ease;
+	transition:all .5s ease;
+}
+.touchy-sub-arrow-inner::before {
+    left:12px;
+    -webkit-transform:rotate(45deg);
+	-moz-transform:rotate(45deg);
+	transform:rotate(45deg);
+}
+.touchy-sub-arrow-inner::after {
+    left:16px;
+    -webkit-transform:rotate(-45deg);
+	-moz-transform:rotate(-45deg);
+	transform:rotate(-45deg);
+}
+
+
+/* ACCORDION MENU ICONS
+**************************************************/
+.touchy-by-bonfire ul li a i,
+.touchy-by-bonfire .sub-menu a i {
+    font-size:12px;
+	float:left;
+	margin:2px 8px 0 0;
+	
+	-webkit-transition:all .2s ease;
+	-moz-transition:all .2s ease;
+	transition:all .2s ease;
+}
+.touchy-by-bonfire ul li a i {
+	color:#8D8D87;
+}
+.touchy-by-bonfire .sub-menu a i {
+	color:#B0B0A9;
+}
+/* highlighted menu item */
+.touchy-by-bonfire ul li.marker > a { border-left:3px solid #C5BD21; }
+
+
+/* SEARCH FIELD
+**************************************************/
+.touchy-search-wrapper {
+    position:absolute;
+    top:60px;
+    left:-1000%;
+    width:100%;
+    height:59px;
+    opacity:0;
+    
+    -webkit-transform:translateY(0);
+	-moz-transform:translateY(0);
+	transform:translateY(0);
+    
+    -webkit-transition:-webkit-transform .3s ease, opacity .3s ease, left 0s ease .3s;
+	-moz-transition:-moz-transform .3s ease, opacity .3s ease, left 0s ease .3s;
+	transition:transform .3s ease, opacity .3s ease, left 0s ease .3s;
+    
+    transform:translate3d(0px,0px,0px);
+    -webkit-transform:translate3d(0px,0px,0px);
+}
+.touchy-search-wrapper-scrolled {
+    position:fixed;
+    top:0;
+}
+.touchy-search-wrapper-active {
+    left:0;
+    opacity:1;
+    -webkit-transform:translateY(51px);
+	-moz-transform:translateY(51px);
+	transform:translateY(51px);
+    
+    -webkit-transition:-webkit-transform .2s ease, opacity .2s ease, left 0s ease 0s;
+	-moz-transition:-moz-transform .2s ease, opacity .2s ease, left 0s ease 0s;
+	transition:transform .2s ease, opacity .2s ease, left 0s ease 0s;
+}
+/* searchform input */
+.touchy-search-wrapper input.touchy-search-field {
+    position:absolute;
+    top:10px;
+    right:10px;
+    width:363px;
+	height:38px;
+	font-family:'Roboto';
+	font-weight:400;
+    font-size:13px;
+	color:#000;
+	border:0;
+    padding:0 0 0 11px;
+    margin:0 0 0 10px;
+	background:none;
+    background-color:#fff;
+    
+    border-radius:1px;
+	
+    -webkit-box-shadow:1px 1px 1px 0px rgba(0,0,0,0.15);
+    -moz-box-shadow:1px 1px 1px 0px rgba(0,0,0,0.15);
+    box-shadow:1px 1px 1px 0px rgba(0,0,0,0.15);
+    
+    /* remove the flickering effect of a tapped link/button when on a touch device */
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    
+    /* remove iOS default formatting */
+    -webkit-appearance:none;
+}
+/* make search field shorter on screens smaller than iPad's portrait mode */
+@media screen and (max-width:767px) {
+.touchy-search-wrapper input.touchy-search-field {
+    width:287px;
+}
+}
+/* search field 'search' button wrapper */
+.touchy-clear-search-wrapper {
+    background-color:red;
+    position:absolute;
+    display:block;
+    top:10px;
+    right:10px;
+}
+/* clear search field button */
+.touchy-clear-search {
+    display:block;
+    position:absolute;
+    top:0;
+    left:-38px;
+    width:38px;
+    height:38px;
+    cursor:pointer;
+    
+    /* remove the flickering effect of a tapped link/button when on a touch device */
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+.touchy-clear-search::before,
+.touchy-clear-search::after {
+    position:absolute;
+    top:18px;
+    left:12px;
+    content:'';
+    display:block;
+    width:13px;
+    height:2px;
+    background-color:#D7D7D7;
+}
+.touchy-clear-search::before {
+    -webkit-transform:rotate(-45deg);
+	-moz-transform:rotate(-45deg);
+	transform:rotate(-45deg);
+}
+.touchy-clear-search::after {
+    -webkit-transform:rotate(45deg);
+	-moz-transform:rotate(45deg);
+	transform:rotate(45deg);
+}
+/* search field 'search' button */
+.touchy-search-wrapper input.touchy-search {
+    position:relative;
+    display:block;
+    min-width:25px;
+    height:38px;
+    padding:0 15px;
+    margin:0;
+    font-family:'Roboto';
+	font-weight:400;
+    font-size:13px;
+    color:#EFEFEF;
+    background-color:#177CB1;
+    cursor:pointer;
+    border:0;
+    
+    border-top-left-radius:0;
+    border-bottom-left-radius:0;
+    border-top-right-radius:1px;
+    border-bottom-right-radius:1px;
+    
+    /* remove the flickering effect of a tapped link/button when on a touch device */
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    
+    /* remove iOS default formatting */
+    -webkit-appearance:none;
+}
+.touchy-search-wrapper input.touchy-search:hover {
+    text-decoration:underline;
+}
+/* searchform placeholder */
+input.touchy-search-field::-webkit-input-placeholder { color:#ADADAA !important; }
+input.touchy-search-field:-moz-placeholder { color:#ADADAA !important; }
+input.touchy-search-field::-moz-placeholder { color:#ADADAA !important; }
+/* to prevent iOS zoom of search area focus, give it font-size of 16px */
+@media screen and (-webkit-min-device-pixel-ratio:1.5) { 
+    input.touchy-search-field { font-size:16px !important; }
+    .touchy-search-wrapper input.touchy-search { font-size:14px; }
+}
+
+
+/* BACKGROUND OVERLAY
+**************************************************/
+/* content overlay (the transparent div that is shown over the entire page when menu is opened) */
+.touchy-overlay {
+	position:fixed;
+	top:0;
+	width:100%;
+    /* 120% for touch device scroll purposes */
+	height:120%;
+	left:-1000%;
+	opacity:0;
+
+	/* content overlay background color */
+	background-color:#000;
+    
+	-webkit-transition:opacity .4s ease, left 0s ease .4s;
+	-moz-transition:opacity .4s ease, left 0s ease .4s;
+	transition:opacity .4s ease, left 0s ease .4s;
+}
+.touchy-overlay-inner {
+    width:100%;
+	height:100%;
+    position:relative;
+    left:-10px;
+    cursor:pointer;
+}
+.touchy-overlay-active {
+	left:0;
+    opacity:.2;
+    
+    -webkit-transition:opacity .4s ease, left 0s ease 0s;
+	-moz-transition:opacity .4s ease, left 0s ease 0s;
+	transition:opacity .4s ease, left 0s ease 0s;
+}
+
+
+/* WIDGET LOCATION
+**************************************************/
+.touchy-widgets-wrapper,
+.touchy-widgets-wrapper .widget,
+.touchy-widgets-wrapper .textwidget,
+.touchy-widgets-wrapper .widget_text {
+    margin:0;
+    padding:0;
+    border:none;
+}
+
+
+/* Z-INDEXES
+**************************************************/
+.touchy-logo-wrapper { z-index:99999; }
+.touchy-wrapper { z-index:99998; }
+.touchy-by-bonfire { z-index:99997; }
+.touchy-search-wrapper { z-index:99996; }
+.touchy-overlay { z-index:99995; }
+.touchy-by-bonfire-wrapper { z-index:99994; }
+.touchy-menu-tooltip:before { z-index:99993; }
+.touchy-clear-search-wrapper { z-index:999; }
+.touchy-clear-search { z-index:999; }
+.touchy-search-wrapper input.touchy-search-field { z-index:998; }
