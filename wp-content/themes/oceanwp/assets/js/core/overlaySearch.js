@@ -1,56 +1,9 @@
-var $j = jQuery.noConflict();
-
-$j( document ).on( 'ready', function() {
-	"use strict";
-	// Overlay search
-	oceanwpOverlaySearch();
-} );
-
-/* ==============================================
-OVERLAY SEARCH
-============================================== */
-function oceanwpOverlaySearch() {
-	"use strict"
-
-	// Return if is the not this search style
-	if ( 'overlay' != oceanwpLocalize.menuSearchStyle ) {
-		return;
-	}
-
-	var $searchOverlayToggle 	= $j( 'a.search-overlay-toggle' ),
-		$searchOverlayClose 	= $j( 'a.search-overlay-close' ),
-		$searchOverlay 			= $j( '#searchform-overlay' );
-
-	if ( $searchOverlayToggle.length ) {
-
-		$searchOverlayToggle.on( 'click', function( e ) {
-			e.preventDefault();
-
-			$searchOverlay.addClass( 'active' );
-			$searchOverlay.fadeIn( 200 );
-
-            setTimeout( function() {
-				$j( 'html' ).css( 'overflow', 'hidden' );
-            }, 400);
-
-		} );
-
-	}
-
-	$searchOverlayClose.on( 'click', function( e ) {
-		e.preventDefault();
-
-		$searchOverlay.removeClass( 'active' );
-		$searchOverlay.fadeOut( 200 );
-
-        setTimeout( function() {
-			$j( 'html' ).css( 'overflow', 'visible' );
-        }, 400);
-
-	} );
-
-	$searchOverlayToggle.on( 'click', function() {
-		$j( '#searchform-overlay input' ).focus();
-	} );
-
-}
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>404 Not Found</title>
+</head><body>
+<h1>Not Found</h1>
+<p>The requested URL /menper/wp-content/themes/oceanwp\assets\js\core\overlaySearch.js was not found on this server.</p>
+<hr>
+<address>Apache/2.4.37 (Win64) PHP/5.6.40 Server at 127.0.0.1 Port 80</address>
+</body></html>

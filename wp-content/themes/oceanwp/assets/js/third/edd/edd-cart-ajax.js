@@ -1,32 +1,9 @@
-var $j = jQuery.noConflict();
-
-$j( document ).on( 'ready', function() {
-	"use strict";
-    // Edd display cart
-    oceanwpEDDCartDetails();
-} );
-
-/* ==============================================
-Easy Digital Downloads Cart Details
-============================================== */
-function oceanwpEDDCartDetails() {
-	"use strict"
-	/**
-	 * EDD cart information in the header
-	 */
-	var cartTotalAmount = $j('.eddmenucart-details.total');
-
-	$j('body').on('edd_cart_item_added', function( event, response ) {
-
-		$j( '.edd-menu-icon' ).removeClass('edd-cart-empty');
-
-		cartTotalAmount.html( response.total );
-
-	});
-
-	$j('body').on('edd_cart_item_removed', function( event, response ) {
-
-		cartTotalAmount.html( response.total );
-	});
-
-}  
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>404 Not Found</title>
+</head><body>
+<h1>Not Found</h1>
+<p>The requested URL /menper/wp-content/themes/oceanwp\assets\js\third\edd\edd-cart-ajax.js was not found on this server.</p>
+<hr>
+<address>Apache/2.4.37 (Win64) PHP/5.6.40 Server at 127.0.0.1 Port 80</address>
+</body></html>

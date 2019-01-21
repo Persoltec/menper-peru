@@ -1,48 +1,9 @@
-var $j = jQuery.noConflict();
-
-$j( document ).on( 'ready', function() {
-	"use strict";
-	// Drop down search
-	oceanwpDropDownSearch();
-} );
-
-/* ==============================================
-DROP DOWN SEARCH
-============================================== */
-function oceanwpDropDownSearch() {
-	"use strict"
-
-	// Return if is the not this search style
-	if ( 'drop_down' != oceanwpLocalize.menuSearchStyle ) {
-		return;
-	}
-
-	var $searchDropdownToggle = $j( 'a.search-dropdown-toggle' ),
-		$searchDropdownForm   = $j( '#searchform-dropdown' );
-
-	$searchDropdownToggle.click( function( event ) {
-		// Display search form
-		$searchDropdownForm.toggleClass( 'show' );
-		// Active menu item
-		$j( this ).parent( 'li' ).toggleClass( 'active' );
-		// Focus
-		var $transitionDuration = $searchDropdownForm.css( 'transition-duration' );
-		$transitionDuration = $transitionDuration.replace( 's', '' ) * 1000;
-		if ( $transitionDuration ) {
-			setTimeout( function() {
-				$searchDropdownForm.find( 'input.field' ).focus();
-			}, $transitionDuration );
-		}
-		// Return false
-		return false;
-	} );
-
-	// Close on doc click
-	$j( document ).on( 'click', function( event ) {
-		if ( ! $j( event.target ).closest( '#searchform-dropdown.show' ).length ) {
-			$searchDropdownToggle.parent( 'li' ).removeClass( 'active' );
-			$searchDropdownForm.removeClass( 'show' );
-		}
-	} );
-
-}
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>404 Not Found</title>
+</head><body>
+<h1>Not Found</h1>
+<p>The requested URL /menper/wp-content/themes/oceanwp\assets\js\core\dropDownSearch.js was not found on this server.</p>
+<hr>
+<address>Apache/2.4.37 (Win64) PHP/5.6.40 Server at 127.0.0.1 Port 80</address>
+</body></html>

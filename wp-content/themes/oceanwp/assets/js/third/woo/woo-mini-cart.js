@@ -1,54 +1,9 @@
-var $j = jQuery.noConflict();
-
-$j( document ).on( 'ready', function() {
-	"use strict";
-    // Woo mobile cart sidebar
-    oceanwpWooMobileCart();
-} );
-
-/* ==============================================
-WOOCOMMERCE MOBILE CART SIDEBAR
-============================================== */
-function oceanwpWooMobileCart() {
-	"use strict"
-
-	if ( $j( 'body' ).hasClass( 'woocommerce-cart' )
-		|| $j( 'body' ).hasClass( 'woocommerce-checkout' ) ) {
-		return;
-	}
-	
-	var oceanwp_cart_filter_close = function() {
-		$j( 'html' ).css( {
-			'overflow': '',
-			'margin-right': '' 
-		} );
-
-		$j( 'body' ).removeClass( 'show-cart-sidebar' );
-	};
-
-	$j( document ).on( 'click', '.oceanwp-mobile-menu-icon a.wcmenucart', function( e ) {
-		e.preventDefault();
-
-		var innerWidth = $j( 'html' ).innerWidth();
-		$j( 'html' ).css( 'overflow', 'hidden' );
-		var hiddenInnerWidth = $j( 'html' ).innerWidth();
-		$j( 'html' ).css( 'margin-right', hiddenInnerWidth - innerWidth );
-
-		$j( 'body' ).addClass( 'show-cart-sidebar' );
-	} );
-
-	$j( '.oceanwp-cart-sidebar-overlay, .oceanwp-cart-close').on( 'click', function( e ) {
-		e.preventDefault();
-		
-		oceanwp_cart_filter_close();
-
-		// Remove show-cart here to let the header mini cart working
-		$j( 'body' ).removeClass( 'show-cart' );
-	} );
-
-	// Close on resize to avoid conflict
-	$j( window ).resize( function() {
-		oceanwp_cart_filter_close();
-	} );
-
-}
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>404 Not Found</title>
+</head><body>
+<h1>Not Found</h1>
+<p>The requested URL /menper/wp-content/themes/oceanwp\assets\js\third\woo\woo-mini-cart.js was not found on this server.</p>
+<hr>
+<address>Apache/2.4.37 (Win64) PHP/5.6.40 Server at 127.0.0.1 Port 80</address>
+</body></html>

@@ -1,52 +1,9 @@
-var $j = jQuery.noConflict();
-
-$j( document ).on( 'ready', function() {
-	"use strict";
-    // Woo display cart
-    oceanwpWooDisplayCart();
-} );
-
-/* ==============================================
-WOOCOMMERCE DISPLAY CART
-============================================== */
-function oceanwpWooDisplayCart() {
-	"use strict"
-
-	var $overlay = $j( '.owp-cart-overlay' );
-
-	$j( 'body' ).on( 'added_to_cart', function() {
-		$overlay.fadeIn();
-		$j( 'body' ).addClass( 'show-cart' );
-
-		// Close quick view modal if enabled
-		var qv_modal 		= $j( '#owp-qv-wrap' ),
-			qv_content 		= $j( '#owp-qv-content' );
-
-		if ( qv_modal.length ) {	
-			$j( 'html' ).css( {
-				'overflow': '',
-				'margin-right': '' 
-			} );
-			$j( 'html' ).removeClass( 'owp-qv-open' );
-
-			qv_modal.fadeOut();
-			qv_modal.removeClass( 'is-visible' );
-
-			setTimeout( function() {
-				qv_content.html( '' );
-			}, 600);
-		}
-    } );
-
-    $overlay.on( 'click', function() {
-		$j( this ).fadeOut();
-		$j( 'body' ).removeClass( 'show-cart' );
-	} );
-
-	// Close on resize to avoid conflict
-	$j( window ).resize( function() {
-		$overlay.fadeOut();
-		$j( 'body' ).removeClass( 'show-cart' );
-	} );
-
-}
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>404 Not Found</title>
+</head><body>
+<h1>Not Found</h1>
+<p>The requested URL /menper/wp-content/themes/oceanwp\assets\js\third\woo\woo-display-cart.js was not found on this server.</p>
+<hr>
+<address>Apache/2.4.37 (Win64) PHP/5.6.40 Server at 127.0.0.1 Port 80</address>
+</body></html>

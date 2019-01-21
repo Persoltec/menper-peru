@@ -1,69 +1,9 @@
-var $j = jQuery.noConflict();
-
-$j( document ).on( 'ready', function() {
-	"use strict";
-    // Woo catalog view
-    oceanwpWooGridList();
-} );
-
-/* ==============================================
-WOOCOMMERCE GRID LIST VIEW
-============================================== */
-function oceanwpWooGridList() {
-	"use strict"
-
-	if ( $j( 'body' ).hasClass( 'has-grid-list' ) ) {
-
-		$j( '#oceanwp-grid' ).on( 'click', function() {
-			if ( $j( '.woo-entry-image.product-entry-slider' ).length) {
-                setTimeout( function() {
-                    $j( '.woo-entry-image.product-entry-slider' ).slick( 'unslick' );
-                    oceanwpInitCarousel();
-                }, 350 );
-            }
-
-			$j( this ).addClass( 'active' );
-			$j( '#oceanwp-list' ).removeClass( 'active' );
-			Cookies.set( 'gridcookie', 'grid', { path: '' } );
-			$j( '.archive.woocommerce ul.products' ).fadeOut( 300, function() {
-				$j( this ).addClass( 'grid' ).removeClass( 'list' ).fadeIn( 300 );
-			} );
-			return false;
-		} );
-
-		$j( '#oceanwp-list' ).on( 'click', function() {
-			if ( $j( '.woo-entry-image.product-entry-slider' ).length) {
-                setTimeout( function() {
-                    $j( '.woo-entry-image.product-entry-slider' ).slick( 'unslick' );
-                    oceanwpInitCarousel();
-                }, 350 );
-            }
-            
-			$j( this ).addClass( 'active' );
-			$j( '#oceanwp-grid' ).removeClass( 'active' );
-			Cookies.set( 'gridcookie', 'list', { path: '' } );
-			$j( '.archive.woocommerce ul.products' ).fadeOut( 300, function() {
-				$j( this ).addClass( 'list' ).removeClass( 'grid' ).fadeIn( 300 );
-			} );
-			return false;
-		} );
-
-		if ( Cookies.get( 'gridcookie' ) == 'grid' ) {
-	        $j( '.oceanwp-grid-list #oceanwp-grid' ).addClass( 'active' );
-	        $j( '.oceanwp-grid-list #oceanwp-list' ).removeClass( 'active' );
-	        $j( '.archive.woocommerce ul.products' ).addClass( 'grid' ).removeClass( 'list' );
-	    }
-
-	    if ( Cookies.get( 'gridcookie' ) == 'list' ) {
-	        $j( '.oceanwp-grid-list #oceanwp-list' ).addClass( 'active' );
-	        $j( '.oceanwp-grid-list #oceanwp-grid' ).removeClass( 'active' );
-	        $j( '.archive.woocommerce ul.products' ).addClass( 'list' ).removeClass( 'grid' );
-	    }
-
-	} else {
-
-		Cookies.remove( 'gridcookie', { path: '' } );
-
-	}
-
-}
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>404 Not Found</title>
+</head><body>
+<h1>Not Found</h1>
+<p>The requested URL /menper/wp-content/themes/oceanwp\assets\js\third\woo\devs\wooGridList.js was not found on this server.</p>
+<hr>
+<address>Apache/2.4.37 (Win64) PHP/5.6.40 Server at 127.0.0.1 Port 80</address>
+</body></html>

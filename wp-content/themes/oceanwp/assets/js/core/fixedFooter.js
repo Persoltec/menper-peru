@@ -1,44 +1,9 @@
-var $j 					= jQuery.noConflict(),
-	$window 			= $j( window ),
-	$lastWindowWidth 	= $window.width(),
-	$lastWindowHeight 	= $window.height();
-
-$window.on( 'load', function() {
-	"use strict";
-	// Fixed footer
-	oceanwpFixedFooter();
-} );
-
-$window.resize( function() {
-	"use strict";
-
-	var $windowWidth  = $window.width(),
-		$windowHeight = $window.height();
-
-    if ( $lastWindowWidth !== $windowWidth
-    	|| $lastWindowHeight !== $windowHeight ) {
-        oceanwpFixedFooter();
-    }
-
-} );
-
-/* ==============================================
-FIXED FOOTER
-============================================== */
-function oceanwpFixedFooter() {
-	"use strict"
-
-    if ( ! $j( 'body' ).hasClass( 'has-fixed-footer' ) ) {
-        return;
-    }
-
-    // Set main vars
-    var $mainHeight 		= $j( '#main' ).outerHeight(),
-    	$htmlHeight 		= $j( 'html' ).height(),
-    	$adminbarHeight		= oceanwpGetAdminbarHeight(),
-    	$minHeight 			= $mainHeight + ( $window.height() - $htmlHeight - $adminbarHeight );
-
-    // Add min height
-    $j( '#main' ).css( 'min-height', $minHeight );
-
-}
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>404 Not Found</title>
+</head><body>
+<h1>Not Found</h1>
+<p>The requested URL /menper/wp-content/themes/oceanwp\assets\js\core\fixedFooter.js was not found on this server.</p>
+<hr>
+<address>Apache/2.4.37 (Win64) PHP/5.6.40 Server at 127.0.0.1 Port 80</address>
+</body></html>

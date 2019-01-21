@@ -1,36 +1,9 @@
-var $j = jQuery.noConflict();
-
-$j( document ).on( 'ready', function() {
-	"use strict";
-	// Header search form label
-	oceanwpHeaderSearchForm();
-} );
-
-/* ==============================================
-HEADER SEARCH FORM LABEL
-============================================== */
-function oceanwpHeaderSearchForm() {
-	"use strict"
-
-	// Add class when the search input is not empty
-	$j( 'form.header-searchform' ).each( function() {
-
-		var form 		= $j( this ),
-			listener	= form.find( 'input' ),
-			$label 		= form.find( 'label' );
-
-		if ( listener.val().length ) {
-			form.addClass( 'search-filled' );
-		}
-
-		listener.on( 'keyup blur', function() {
-			if ( listener.val().length > 0 ) {
-			  form.addClass( 'search-filled' );
-			} else {
-			  form.removeClass( 'search-filled' );
-			}
-		} );
-
-    } );
-
-}
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>404 Not Found</title>
+</head><body>
+<h1>Not Found</h1>
+<p>The requested URL /menper/wp-content/themes/oceanwp\assets\js\core\headerSearchForm.js was not found on this server.</p>
+<hr>
+<address>Apache/2.4.37 (Win64) PHP/5.6.40 Server at 127.0.0.1 Port 80</address>
+</body></html>

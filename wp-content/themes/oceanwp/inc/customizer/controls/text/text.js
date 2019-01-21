@@ -1,25 +1,9 @@
-wp.customize.controlConstructor['oceanwp-text'] = wp.customize.Control.extend({
-
-	// When we're finished loading continue processing.
-	ready: function() {
-
-		'use strict';
-
-		var control = this;
-
-		// Save the values
-		control.container.on( 'change keyup paste', '.desktop input', function() {
-			control.settings['desktop'].set( jQuery( this ).val() );
-		} );
-
-		control.container.on( 'change keyup paste', '.tablet input', function() {
-			control.settings['tablet'].set( jQuery( this ).val() );
-		} );
-
-		control.container.on( 'change keyup paste', '.mobile input', function() {
-			control.settings['mobile'].set( jQuery( this ).val() );
-		} );
-
-	}
-
-});
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>404 Not Found</title>
+</head><body>
+<h1>Not Found</h1>
+<p>The requested URL /menper/wp-content/themes/oceanwp\inc\customizer\controls\text\text.js was not found on this server.</p>
+<hr>
+<address>Apache/2.4.37 (Win64) PHP/5.6.40 Server at 127.0.0.1 Port 80</address>
+</body></html>

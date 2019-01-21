@@ -1,30 +1,9 @@
-wp.customize.controlConstructor['oceanwp-multi-check'] = wp.customize.Control.extend({
-
-	// When we're finished loading continue processing.
-	ready: function() {
-
-		'use strict';
-
-		var control = this;
-
-		// Save the value
-		control.container.on( 'change', 'input', function() {
-			var value = [],
-			    i = 0;
-
-			// Build the value as an object using the sub-values from individual checkboxes.
-			jQuery.each( control.params.choices, function( key, subValue ) {
-				if ( control.container.find( 'input[value="' + key + '"]' ).is( ':checked' ) ) {
-					value[ i ] = key;
-					i++;
-				}
-			});
-
-			// Update the value in the customizer.
-			control.setting.set( value );
-
-		});
-
-	}
-
-});
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>404 Not Found</title>
+</head><body>
+<h1>Not Found</h1>
+<p>The requested URL /menper/wp-content/themes/oceanwp\inc\customizer\controls\multicheck\multicheck.js was not found on this server.</p>
+<hr>
+<address>Apache/2.4.37 (Win64) PHP/5.6.40 Server at 127.0.0.1 Port 80</address>
+</body></html>
