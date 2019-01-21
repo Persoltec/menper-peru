@@ -1,9 +1,39 @@
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
-<html><head>
-<title>404 Not Found</title>
-</head><body>
-<h1>Not Found</h1>
-<p>The requested URL /menper/wp-content/themes/oceanwp\assets\js\core\isotope.js was not found on this server.</p>
-<hr>
-<address>Apache/2.4.37 (Win64) PHP/5.6.40 Server at 127.0.0.1 Port 80</address>
-</body></html>
+var $j = jQuery.noConflict();
+
+$j( document ).on( 'ready', function() {
+	"use strict";
+	// Masonry grids
+	oceanwpMasonryGrids();
+} );
+
+$j( window ).on( 'orientationchange', function() {
+	"use strict";
+	// Masonry grids
+	oceanwpMasonryGrids();
+} );
+
+/* ==============================================
+MASONRY
+============================================== */
+function oceanwpMasonryGrids() {
+	"use strict"
+
+	$j( '.blog-masonry-grid' ).each( function() {
+
+		var $this               = $j( this ),
+			$transitionDuration = '0.0',
+			$layoutMode         = 'masonry';
+
+		// Load isotope after images loaded
+		$this.imagesLoaded( function() {
+			$this.isotope( {
+				itemSelector       : '.isotope-entry',
+				transformsEnabled  : true,
+				isOriginLeft       : oceanwpLocalize.isRTL ? false : true,
+				transitionDuration : $transitionDuration + 's'
+			} );
+		} );
+
+	} );
+
+}

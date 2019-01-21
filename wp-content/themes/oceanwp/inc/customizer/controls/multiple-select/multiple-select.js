@@ -1,9 +1,29 @@
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
-<html><head>
-<title>404 Not Found</title>
-</head><body>
-<h1>Not Found</h1>
-<p>The requested URL /menper/wp-content/themes/oceanwp\inc\customizer\controls\multiple-select\multiple-select.js was not found on this server.</p>
-<hr>
-<address>Apache/2.4.37 (Win64) PHP/5.6.40 Server at 127.0.0.1 Port 80</address>
-</body></html>
+wp.customize.controlConstructor['oceanwp-multiple-select'] = wp.customize.Control.extend({
+
+	// When we're finished loading continue processing.
+	ready: function() {
+
+		'use strict';
+
+		var control  = this,
+		    element  = this.container.find( 'select' ),
+		    selectValue,
+		    select2Options = {
+				escapeMarkup: function( markup ) {
+					return markup;
+				}
+		    };
+
+		jQuery( element ).select2( select2Options ).on( 'change', function() {
+			selectValue = jQuery( this ).val();
+			control.setting.set( selectValue );
+			if ( null === selectValue ) {
+				control.setting.set( '' );
+			} else {
+				control.setting.set( selectValue );
+			}
+		});
+
+	}
+
+});

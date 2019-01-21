@@ -1,9 +1,30 @@
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
-<html><head>
-<title>404 Not Found</title>
-</head><body>
-<h1>Not Found</h1>
-<p>The requested URL /menper/wp-content/themes/oceanwp\assets\js\core\parallaxFooter.js was not found on this server.</p>
-<hr>
-<address>Apache/2.4.37 (Win64) PHP/5.6.40 Server at 127.0.0.1 Port 80</address>
-</body></html>
+var $j = jQuery.noConflict();
+
+$j( document ).on( 'ready', function() {
+	"use strict";
+	// Parallax footer
+	oceanwpParallaxFooter();
+} );
+
+$j( window ).on( 'resize', function() {
+	"use strict";
+	// Parallax footer
+	oceanwpParallaxFooter();
+} );
+
+/* ==============================================
+PARALLAX FOOTER
+============================================== */
+function oceanwpParallaxFooter() {
+	"use strict"
+
+	// Needed timeout for dynamic parallax content
+	if ( $j( 'body' ).hasClass( 'has-parallax-footer' ) ) {
+
+		setTimeout( function() {
+			$j( '#main' ).css( 'margin-bottom', $j( '.parallax-footer' ).outerHeight() );
+		}, 1 );
+
+	}
+
+}

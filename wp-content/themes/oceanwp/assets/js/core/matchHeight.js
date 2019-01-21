@@ -1,9 +1,21 @@
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
-<html><head>
-<title>404 Not Found</title>
-</head><body>
-<h1>Not Found</h1>
-<p>The requested URL /menper/wp-content/themes/oceanwp\assets\js\core\matchHeight.js was not found on this server.</p>
-<hr>
-<address>Apache/2.4.37 (Win64) PHP/5.6.40 Server at 127.0.0.1 Port 80</address>
-</body></html>
+var $j = jQuery.noConflict();
+
+$j( document ).on( 'ready', function() {
+	"use strict";
+    // Match height elements
+	oceanwpInitMatchHeight();
+} );
+
+/* ==============================================
+MATCH HEIGHTS
+============================================== */
+function oceanwpInitMatchHeight() {
+	"use strict"
+
+	// Add match heights grid
+	$j( '.match-height-grid .match-height-content' ).matchHeight({ property: 'min-height' });
+
+	// Blog entries
+	$j( '.blog-equal-heights .blog-entry-inner' ).matchHeight({ property: 'min-height' });
+
+}

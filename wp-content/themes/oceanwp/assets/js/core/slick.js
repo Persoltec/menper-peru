@@ -1,9 +1,45 @@
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
-<html><head>
-<title>404 Not Found</title>
-</head><body>
-<h1>Not Found</h1>
-<p>The requested URL /menper/wp-content/themes/oceanwp\assets\js\core\slick.js was not found on this server.</p>
-<hr>
-<address>Apache/2.4.37 (Win64) PHP/5.6.40 Server at 127.0.0.1 Port 80</address>
-</body></html>
+var $j = jQuery.noConflict();
+
+$j( document ).on( 'ready', function() {
+	"use strict";
+	// Carousel
+	oceanwpInitCarousel();
+} );
+
+/* ==============================================
+CAROUSEL
+============================================== */
+function oceanwpInitCarousel( $context ) {
+	"use strict"
+
+	var $carousel = $j( '.gallery-format, .product-entry-slider', $context );
+
+	// If RTL
+	if ( $j( 'body' ).hasClass( 'rtl' ) ) {
+		var rtl = true;
+	} else {
+		var rtl = false;
+	}
+
+	// Return autoplay to false if woo slider
+	if ( $carousel.hasClass( 'woo-entry-image' ) ) {
+		var autoplay = false;
+	} else {
+		var autoplay = true;
+	}
+
+	// Slide speed
+	var speed = 7000;
+
+	// Gallery slider
+	$carousel.imagesLoaded( function() {
+		$carousel.slick( {
+			autoplay: autoplay,
+			autoplaySpeed: speed,
+			prevArrow: '<button type="button" class="slick-prev"><span class="fa fa-angle-left"></span></button>',
+			nextArrow: '<button type="button" class="slick-next"><span class="fa fa-angle-right"></span></button>',
+			rtl: rtl,
+		} );
+	} );
+
+}

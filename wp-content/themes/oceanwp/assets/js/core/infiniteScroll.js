@@ -1,9 +1,81 @@
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
-<html><head>
-<title>404 Not Found</title>
-</head><body>
-<h1>Not Found</h1>
-<p>The requested URL /menper/wp-content/themes/oceanwp\assets\js\core\infiniteScroll.js was not found on this server.</p>
-<hr>
-<address>Apache/2.4.37 (Win64) PHP/5.6.40 Server at 127.0.0.1 Port 80</address>
-</body></html>
+var $j 		= jQuery.noConflict(),
+	$window = $j( window );
+
+$window.on( 'load', function() {
+	"use strict";
+	if ( $j.fn.infiniteScroll !== undefined && $j( 'div.infinite-scroll-nav' ).length ) {
+		// Infinite scroll
+		oceanwpInfiniteScrollInit();
+	}
+} );
+
+/* ==============================================
+INFINITE SCROLL
+============================================== */
+function oceanwpInfiniteScrollInit() {
+	"use strict"
+
+	// Get infinite scroll container
+	var $container = $j( '.infinite-scroll-wrap' );
+
+	// Start infinite sccroll
+	$container.infiniteScroll( {
+		path 	: '.older-posts a',
+		append 	: '.item-entry',
+		status 	: '.scroller-status',
+		hideNav : '.infinite-scroll-nav',
+		history : false,
+	} );
+
+	$container.on( 'load.infiniteScroll', function( event, response, path, items ) {
+
+		var $items = $j( response ).find( '.item-entry' );
+
+		$items.imagesLoaded( function() {
+
+			// Animate new Items
+			$items.animate( {
+				opacity : 1
+			} );
+
+			// Force the images to be parsed to fix Safari issue
+			$items.find( 'img' ).each( function( index, img ) {
+				img.outerHTML = img.outerHTML;
+			} );
+
+			// Isotope
+			if ( $container.hasClass( 'blog-masonry-grid' ) ) {
+				$container.isotope( 'appended', $items );
+				$items.css( 'opacity', 0 );
+			}
+
+			// Re-run functions
+			if ( ! $j( 'body' ).hasClass( 'no-carousel' ) ) {
+				oceanwpInitCarousel( $items );
+			}
+
+			if ( ! $j( 'body' ).hasClass( 'no-lightbox' ) ) {
+				oceanwpInitLightbox( $items );
+			}
+
+			if ( ! $j( 'body' ).hasClass( 'no-fitvids' ) ) {
+				oceanwpInitFitVids( $items );
+			}
+
+			// Match heights
+			if ( ! $j( 'body' ).hasClass( 'no-matchheight' ) ) {
+				$j( '.blog-equal-heights .blog-entry-inner' ).matchHeight({ property: 'min-height' });
+			}
+
+		    // Gallery posts
+		    if ( $j( '.gallery-format' ).parent( '.thumbnail' ) && $j( '.blog-masonry-grid' ).length ) {
+				setTimeout( function() {
+					$j( '.blog-masonry-grid' ).isotope( 'layout' );
+				}, 600 + 1 );
+			}
+
+		} );
+
+	} );
+
+}

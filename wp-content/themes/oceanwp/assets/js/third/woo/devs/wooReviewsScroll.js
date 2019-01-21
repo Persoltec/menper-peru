@@ -1,9 +1,27 @@
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
-<html><head>
-<title>404 Not Found</title>
-</head><body>
-<h1>Not Found</h1>
-<p>The requested URL /menper/wp-content/themes/oceanwp\assets\js\third\woo\devs\wooReviewsScroll.js was not found on this server.</p>
-<hr>
-<address>Apache/2.4.37 (Win64) PHP/5.6.40 Server at 127.0.0.1 Port 80</address>
-</body></html>
+var $j = jQuery.noConflict();
+
+$j( document ).on( 'ready', function() {
+	"use strict";
+    // Woo reviews scroll
+    oceanwpWooReviewsScroll();
+} );
+
+/* ==============================================
+WOOCOMMERCE REVIEWS SCROLL
+============================================== */
+function oceanwpWooReviewsScroll() {
+	"use strict"
+
+	$j( '.woocommerce div.product .woocommerce-review-link' ).click( function( event ) {
+		$j( '.woocommerce-tabs .description_tab' ).removeClass( 'active' );
+      	$j( '.woocommerce-tabs .reviews_tab' ).addClass( 'active' );
+		$j( '.woocommerce-tabs #tab-description' ).css( 'display', 'none' );
+      	$j( '.woocommerce-tabs #tab-reviews' ).css( 'display', 'block' );
+
+		$j( 'html, body' ).stop(true,true).animate( {
+			scrollTop: $j( this.hash ).offset().top -120
+		}, 'normal' );
+		return false;
+	} );
+
+}

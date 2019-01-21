@@ -1,9 +1,34 @@
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
-<html><head>
-<title>404 Not Found</title>
-</head><body>
-<h1>Not Found</h1>
-<p>The requested URL /menper/wp-content/themes/oceanwp\assets\js\core\superfish.js was not found on this server.</p>
-<hr>
-<address>Apache/2.4.37 (Win64) PHP/5.6.40 Server at 127.0.0.1 Port 80</address>
-</body></html>
+var $j = jQuery.noConflict();
+
+$j( document ).on( 'ready', function() {
+	"use strict";
+	// Superfish menus
+	oceanwpSuperFish();
+} );
+
+/* ==============================================
+SUPERFISH MENUS
+============================================== */
+function oceanwpSuperFish() {
+	"use strict"
+
+	// Return if vertical header style
+	if ( $j( '#site-header' ).hasClass( 'vertical-header' ) ) {
+		return;
+	}
+
+	$j( 'ul.sf-menu' ).superfish( {
+		delay: 600,
+		animation: {
+			opacity: 'show'
+		},
+		animationOut: {
+			opacity: 'hide'
+		},
+		speed: 'fast',
+		speedOut: 'fast',
+		cssArrows: false,
+		disableHI: false,
+	} );
+
+}

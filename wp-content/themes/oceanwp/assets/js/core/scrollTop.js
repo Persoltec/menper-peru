@@ -1,9 +1,38 @@
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
-<html><head>
-<title>404 Not Found</title>
-</head><body>
-<h1>Not Found</h1>
-<p>The requested URL /menper/wp-content/themes/oceanwp\assets\js\core\scrollTop.js was not found on this server.</p>
-<hr>
-<address>Apache/2.4.37 (Win64) PHP/5.6.40 Server at 127.0.0.1 Port 80</address>
-</body></html>
+var $j 		= jQuery.noConflict(),
+	$window = $j( window );
+
+$j( document ).on( 'ready', function() {
+	"use strict";
+	// Scroll top
+	oceanwpScrollTop();
+} );
+
+/* ==============================================
+SCROLL TOP
+============================================== */
+function oceanwpScrollTop() {
+	"use strict"
+
+	var selectors  = {
+		scrollTop  		: '#scroll-top',
+		topLink    		: 'a[href="#go-top"]',
+		slashTopLink 	: 'body.home a[href="/#go-top"]'
+	}
+
+	$window.on( 'scroll', function() {
+		if ( $j( this ).scrollTop() > 100 ) {
+			$j( '#scroll-top' ).fadeIn();
+		} else {
+			$j( '#scroll-top' ).fadeOut();
+		}
+	});
+
+	$j.each( selectors, function( key, value ){
+		$j( value ).on( 'click', function(e){
+			e.preventDefault();
+			$j( 'html, body' ).animate( { scrollTop:0 }, 400 );
+			$j( this ).parent().removeClass( 'sfHover' );
+		});
+	});
+
+}
